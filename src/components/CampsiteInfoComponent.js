@@ -1,6 +1,60 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {
+    Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb,
+    BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, ModalFooter,
+    Form, FormGroup, Input, Label
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
+
+class CommentForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.toggleModal = this.toggleModal.bind(this);
+
+        this.state = {
+            isModalOpen: false
+        };
+    }
+
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <Button outline onClick={this.toggleModal}>
+                    <i className="fa fa-pencil" />Submit Comment
+            </Button>
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                    <ModalBody>
+                        <Form onSubmit={this.handleLogin}>
+                            <FormGroup>
+                                <Label htmlFor="rating">Rating</Label>
+                                <Input type="text" id="rating" name="rating"
+                                    innerRef={input => this.rating = input} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="yourName">Your Name</Label>
+                                <Input type="text" id="yourName" name="yourName"
+                                    innerRef={input => this.yourName = input} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="comment">Comments</Label>
+                                <Input type="text" id="comment" name="comment"
+                                    innerRef={input => this.comment = input} />
+                            </FormGroup>
+                            <Button type="submit" value="submit" color="primary">Login</Button>
+                        </Form>
+                    </ModalBody>
+                </Modal>
+            </React.Fragment>
+        );
+    }
+}
 
 function RenderCampsite({ campsite }) {
     return (

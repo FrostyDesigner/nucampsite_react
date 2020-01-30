@@ -1,8 +1,7 @@
 import React from 'react';
 import {
-    Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb,
-    BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, ModalFooter,
-    Form, FormGroup, Input, Label
+    Card, CardImg, CardText, CardBody, Breadcrumb,
+    BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Label
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form'
@@ -32,7 +31,7 @@ function RenderCampsite({ campsite }) {
     );
 }
 
-function RenderComments({comments, postComment, campsiteId}) {
+function RenderComments({ comments, postComment, campsiteId }) {
     if (comments) {
         return (
             <div className="col-md-5 m1">
@@ -43,7 +42,7 @@ function RenderComments({comments, postComment, campsiteId}) {
                             <Fade in key={comment.id}>
                                 <div>
                                     <p>{comment.text}<br />
-                                        -- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
+                                        -- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}
                                     </p>
                                 </div>
                             </Fade>
@@ -72,7 +71,7 @@ class CommentForm extends React.Component {
         });
     }
 
-    handleSubmit(values) {        
+    handleSubmit(values) {
         this.toggleModal();
         this.props.postComment(this.props.campsiteId, values.rating, values.author, values.text);
         // console.log("Current State is:" + JSON.stringify(values));
@@ -175,7 +174,7 @@ function CampsiteInfo(props) {
                 </div>
                 <div className="row">
                     <RenderCampsite campsite={props.campsite} />
-                    <RenderComments 
+                    <RenderComments
                         comments={props.comments}
                         postComment={props.postComment}
                         campsiteId={props.campsite.id}

@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import {
-    Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
+import React, { Component }  from 'react';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label
-} from 'reactstrap';
+    Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -11,9 +9,10 @@ class Header extends Component {
     constructor(props) {
         super(props);
 
+        
         this.state = {
-            isNavOpen: false,
-            isModalOpen: false
+          isNavOpen: false,
+          isModalOpen: false
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
@@ -37,6 +36,7 @@ class Header extends Component {
         this.toggleModal();
         event.preventDefault();
     }
+
 
     render() {
         return (
@@ -83,7 +83,6 @@ class Header extends Component {
                                     <i className="fa fa-sign-in fa-lg" /> Login
                                 </Button>
                             </span>
-
                         </Collapse>
                     </div>
                 </Navbar>
